@@ -1,5 +1,5 @@
 
-# Salon Appointment Booking System
+# Quick Salon System
 
 A web application designed to streamline the salon appointment process, enabling users to book appointments at the nearest or any available salon. Inspired by ride-hailing apps like Ola and Uber, this system prioritizes efficiency in appointment scheduling, reduces wait times, and securely handles payments.
 
@@ -21,7 +21,7 @@ A web application designed to streamline the salon appointment process, enabling
 
 - **Frontend**: React.js (UI development) with Chakra UI components
 - **Backend**: Java Spring Boot for managing API and business logic
-- **Database**: MySQL or MongoDB for storing user, salon, and appointment data
+- **Database**: MySQL for storing user, salon, and appointment data
 - **Real-time Scheduling**: Dynamic slot management for availability tracking
 
 ## Getting Started
@@ -32,8 +32,7 @@ These instructions will help you set up the project on your local machine for de
 
 - **Node.js** and **npm** (for frontend setup)
 - **Java JDK** (for backend setup with Spring Boot)
-- **MySQL** or **MongoDB** (based on your database choice)
-- **Docker** (optional, if using Docker containers for the backend or database)
+- **MySQL** 
 
 ### Installation
 
@@ -69,11 +68,11 @@ These instructions will help you set up the project on your local machine for de
 1. **Run the Frontend**
    ```bash
    cd frontend
-   npm start
+   npm run dev
    ```
 
 2. **Access the App**
-   - Open your browser and navigate to `http://localhost:3000` to use the application.
+   - Open your browser and navigate to `http://localhost:5173` to use the application.
 
 ## Usage
 
@@ -93,5 +92,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or feedback, feel free to reach out:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [https://github.com/yourusername](https://github.com/yourusername)
+- **Email**: [mahadevwaghmode2@gmail.com](mailto:mahadevwaghmode2@gmail.com)
+- **GitHub**: [https://github.com/mahadevwaghmode](https://github.com/mahadevwaghmode)
