@@ -1,0 +1,116 @@
+{
+  "salons": [
+    {
+      "name": "My Salon",
+      "location": "Barshi",
+      "services": [
+        "Haircut",
+        "Massage"
+      ],
+      "operatingTime": "7 AM to 9 PM",
+      "id": "1"
+    },
+    {
+      "name": "Luxury Salon",
+      "location": "Mumbai",
+      "services": [
+        "Hair Spa",
+        "Facial"
+      ],
+      "operatingTime": "8 AM to 10 PM",
+      "id": "2"
+    }
+  ],
+  "services": [
+    {
+      "id": "2",
+      "name": "Massage",
+      "description": "Relaxing full-body massage.",
+      "price": 1500,
+      "category": "Skin"
+    },
+    {
+      "id": "3",
+      "name": "Hair Coloring",
+      "description": "Professional hair coloring services.",
+      "price": 1200,
+      "category": "Hair"
+    },
+    {
+      "id": "4",
+      "name": "Manicure",
+      "description": "Hand and nail care treatment.",
+      "price": 800,
+      "category": "Nails"
+    },
+    {
+      "id": "5",
+      "name": "Pedicure",
+      "description": "Foot and nail care treatment.",
+      "price": 900,
+      "category": "Nails"
+    },
+    {
+      "id": "6",
+      "name": "Hair Spa",
+      "description": "Luxury hair spa treatment.",
+      "price": 2000,
+      "category": "Hair"
+    },
+    {
+      "id": "7",
+      "name": "Facial",
+      "description": "Refreshing and cleansing facial treatment.",
+      "price": 1800,
+      "category": "Skin"
+    },
+    {
+      "id": "8",
+      "name": "Body Scrub",
+      "description": "Exfoliating body scrub treatment.",
+      "price": 1600,
+      "category": "Skin"
+    },
+    {
+      "id": "9",
+      "name": "Bridal Makeup",
+      "description": "Exclusive bridal makeup package.",
+      "price": 5000,
+      "category": "Makeup"
+    }
+  ],
+  "staff": [
+    {
+      "name": "Mahadev",
+      "role": "Admin",
+      "email": "mahadevwaghmode2@gmail.com",
+      "phone": "914548801",
+      "id": "6d8c"
+    },
+    {
+      "id": "50a8",
+      "name": "gdsfn",
+      "role": "gf nvcg",
+      "email": "hfn",
+      "phone": "rfng"
+    }
+  ],
+  "appointments": [
+    {
+      "name": "Mahade",
+      "services": "zlsfhn",
+      "dateandtime": "SDNGIL",
+      "email": "lzfnkbgl",
+      "phone": "sodngl",
+      "id": "8427"
+    },
+    {
+      "id": "a0a1",
+      "name": "VGMSDFS",
+      "services": "KNDFNKDSFK",
+      "dateandtime": "DKN FLKASDNF",
+      "email": "SADLFKLSD",
+      "phone": "LASDKNMFLNKSD"
+    }
+  ]
+}
