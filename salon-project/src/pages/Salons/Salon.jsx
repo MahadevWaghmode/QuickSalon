@@ -111,31 +111,7 @@ const Salon = () => {
           handleAddOrUpdateSalon={handleAddOrUpdateSalon}
           onDeleteClick={openDeleteDialog}
         />
-        {/* <TableComponent
-          columns={columns}
-          data={salons}
-          renderActions={(salon) => (
-            <>
-              <AddOrEditItemModal
-                itemType={itemType}
-                isEdit={true}
-                item={salon}
-                modalTitle="Edit Salon"
-                fields={columns}
-                onSubmit={handleAddOrUpdateSalon}
-              />
-              <Button
-                onClick={() => openDeleteDialog(salon)}
-                rightIcon={<MdDelete />}
-                colorScheme="red"
-                variant="solid"
-                size="sm"
-              >
-                Delete
-              </Button>
-            </>
-          )}
-        /> */}
+        
       </Card>
 
       <ConfirmDeleteDialog

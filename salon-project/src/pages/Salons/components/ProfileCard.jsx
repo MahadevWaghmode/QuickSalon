@@ -8,11 +8,15 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import EditSalonProfileModal from "../../../components/EditSalonProfileModal";
 
-function ProfileCard({ salon }) {
+function ProfileCard({ salon,onSubmit }) {
   // Count the number of services and employees
   const numberOfServices = salon.services ? salon.services.length : 0;
   const numberOfEmployees = salon.employee ? salon.employee.length : 0;
+  
+  
+
 
   return (
     <Box
@@ -22,8 +26,8 @@ function ProfileCard({ salon }) {
       boxShadow="md"
       textAlign="center"
       borderRadius={["20px", "10px"]}
-      borderBottomRadius={["0px","10px"]}
-      position={["sticky",""]}
+      borderBottomRadius={["0px", "10px"]}
+      position={["sticky", ""]}
     >
       {/* Profile Picture */}
       <Avatar size="xl" src="/salon_profile.png" mb={4} h={171} w={171} />
@@ -33,7 +37,7 @@ function ProfileCard({ salon }) {
         {salon.name}
       </Text>
       <Text color="gray.500">{salon.description}</Text>
-      
+
       {/* Location */}
       <HStack justify="center" mt={1}>
         <Icon as={FaMapMarkerAlt} color="gray.500" />
@@ -66,9 +70,10 @@ function ProfileCard({ salon }) {
 
       {/* Action Buttons */}
       <HStack justifyContent="center" spacing={4} mt={5}>
-        <Button colorScheme="blue" size="sm">
-          Edit Profile
-        </Button>
+        <EditSalonProfileModal
+          salon={salon}
+          onSubmit={onSubmit}
+        />
         <Button colorScheme="blue" variant="outline" size="sm">
           Add Friend
         </Button>

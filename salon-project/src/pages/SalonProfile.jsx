@@ -42,6 +42,10 @@ const SalonProfile = () => {
       .finally(() => setLoading(false));
   }, [salonId]);
 
+  const handleEditSalonProfile = (updatedSalon) => {
+    setSalon(updatedSalon); // Update the state with the new salon data
+  };
+
   if (loading) {
     return (
       <DashboardLayout title="Salon Profile">
@@ -60,15 +64,12 @@ const SalonProfile = () => {
   return (
     <DashboardLayout title="Salon Profile">
       <Grid
-        gridTemplateColumns={{
-          base: "repeat(1, 1fr)",
-          xl: "repeat(3, 1fr)",
-        }}
+        gridTemplateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(3, 1fr)" }}
         gap="6"
       >
         <GridItem colSpan={1}>
           <Flex gap={1} direction={["column", "row"]}>
-            <ProfileCard salon={salon} />
+            <ProfileCard salon={salon} onSubmit={handleEditSalonProfile} />
             <Box display={["none", "contents"]}>
               <Sidebar />
             </Box>
@@ -84,7 +85,6 @@ const SalonProfile = () => {
               borderColor="blue.600"
               mr={5}
               onClick={() => setActiveTab("Services")}
-              aria-selected={activeTab === "Services"}
             >
               Services
             </Box>
@@ -94,12 +94,10 @@ const SalonProfile = () => {
               borderBottom={activeTab === "Employees" ? "2px solid" : "none"}
               borderColor="blue.600"
               onClick={() => setActiveTab("Employees")}
-              aria-selected={activeTab === "Employees"}
             >
               Employees
             </Box>
           </Flex>
-          {/* Conditional Rendering of Content */}
           {activeTab === "Services" && (
             <VStack align="start" mt={5} spacing={4}>
               {salon.services && salon.services.length > 0 ? (
