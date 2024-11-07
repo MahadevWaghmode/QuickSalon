@@ -24,6 +24,8 @@ import com.salon.service.SalonService;
 import com.salon.service.ServiceService;
 import com.salon.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -131,9 +133,10 @@ public class AdminController {
 
 	@Autowired
 	EmployeeService employeeService;
-
+	
 	@PostMapping("/salon/{salonId}/employee")
-	public ResponseEntity<Employee> addEmployeeService(@RequestBody Employee employee, @PathVariable int salonId) {
+	public ResponseEntity<Employee> addEmployeeService(@Valid @RequestBody Employee employee, @PathVariable int salonId) {
+		System.out.println(employee);
 
 		Employee createdEmployee = this.employeeService.createEmployee(salonId, employee);
 

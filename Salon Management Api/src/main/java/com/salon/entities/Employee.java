@@ -1,4 +1,5 @@
 package com.salon.entities;
+
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,23 +22,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String name;
+	@NotEmpty
+	private String name;
 
-    private String role;
+	@NotEmpty
+	private String role;
 
-    @Column(name = "date_of_joining")
-    private LocalDate dateOfJoining;
+	@NotNull(message = "Date of joining cannot be null")
+	@Column(name = "date_of_joining")
+	private LocalDate dateOfJoining;
 
-    private String contactInfo;
+	@NotEmpty
+	private String contactInfo;
+	
+	@NotNull(message = "Salary cannot be null")
+	private Double salary;
 
-    private Double salary;
-    
-    @JsonIgnore
-    @ManyToOne
-    private Salon salon;
-    
+	@JsonIgnore
+	@ManyToOne
+	private Salon salon;
+
 }

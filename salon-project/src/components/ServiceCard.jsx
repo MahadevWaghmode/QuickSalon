@@ -4,6 +4,7 @@ import { Box, Text, VStack, Badge } from "@chakra-ui/react";
 const ServiceCard = ({ service }) => {
   return (
     <Box
+    w={["full","max"]}
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"

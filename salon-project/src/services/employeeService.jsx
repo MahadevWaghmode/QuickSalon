@@ -1,6 +1,5 @@
-const BASE_URL = "http://localhost:5000/staff";
+import { privateAxios } from "./helper";
 
-// Fetch all employees
 export const getAllEmployees = async () => {
   try {
     const response = await fetch(BASE_URL);
@@ -15,26 +14,22 @@ export const getAllEmployees = async () => {
   }
 };
 
-// Add a new employee
-export const addEmployee = async (employeeData) => {
+
+export const addEmployee = async (salonId,employee) => {
   try {
-    const response = await fetch(BASE_URL, {
-      method: "POST",
+    const response = await privateAxios.post(`/api/admin/salon/${salonId}/employee`, employee, {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(employeeData),
     });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (error) {
-    console.error("Error adding employee:", error);
+    console.error(`Error Adding Salon:`, error);
     throw error;
   }
 };
+
+
 
 // Edit an existing employee (assumes a PUT endpoint exists)
 export const editEmployee = async (employeeId, updatedData) => {

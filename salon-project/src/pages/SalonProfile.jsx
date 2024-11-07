@@ -9,12 +9,18 @@ import {
   GridItem,
   Flex,
   VStack,
+  Text,
+  Spacer,
+  IconButton,
 } from "@chakra-ui/react";
 import { getSalon } from "../services/salonService";
 import ProfileCard from "./Salons/components/ProfileCard";
 import ServiceCard from "../components/ServiceCard";
 import EmployeeCard from "../components/EmployeeCard";
 import Sidebar from "../components/Sidebar";
+import { BiPlus, BiPlusCircle } from "react-icons/bi";
+import AddServiceModal from "./Services/components/AddServiceModal";
+import AddEmployeeModal from "../components/AddEmployeeModal";
 
 const SalonProfile = () => {
   const { salonId } = useParams();
@@ -23,28 +29,37 @@ const SalonProfile = () => {
   const [activeTab, setActiveTab] = useState("Services");
   const toast = useToast();
 
-  useEffect(() => {
+  const fetchSalon = async (id) => {
     setLoading(true);
-    getSalon(salonId)
-      .then((data) => {
-        setSalon(data);
-      })
-      .catch((error) => {
-        console.error(error);
-        toast({
-          title: "Failed to fetch",
-          description: "Unable to get salon details.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      })
-      .finally(() => setLoading(false));
+    try {
+      const data = await getSalon(id);
+      setSalon(data);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Failed to fetch",
+        description: "Unable to get salon details.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSalon(salonId);
   }, [salonId]);
 
   const handleEditSalonProfile = (updatedSalon) => {
-    setSalon(updatedSalon); // Update the state with the new salon data
+    fetchSalon(salonId) // Update the state with the new salon data
   };
+  const handleAddEmp=() =>{
+    fetchSalon(salonId);
+  }
+
+  
 
   if (loading) {
     return (
@@ -70,9 +85,9 @@ const SalonProfile = () => {
         <GridItem colSpan={1}>
           <Flex gap={1} direction={["column", "row"]}>
             <ProfileCard salon={salon} onSubmit={handleEditSalonProfile} />
-            <Box display={["none", "contents"]}>
+            {/* <Box display={["none", "contents"]}>
               <Sidebar />
-            </Box>
+            </Box> */}
           </Flex>
         </GridItem>
 
@@ -96,6 +111,13 @@ const SalonProfile = () => {
               onClick={() => setActiveTab("Employees")}
             >
               Employees
+              </Box>
+              <Box ml={20}>
+              {activeTab === "Services" ? (
+                <AddServiceModal />
+              ) : (
+                <AddEmployeeModal salonId={salon.id} onSubmit={handleAddEmp} />
+              )}
             </Box>
           </Flex>
           {activeTab === "Services" && (
@@ -126,9 +148,9 @@ const SalonProfile = () => {
           )}
         </GridItem>
       </Grid>
-      <Box display={["block", "none"]} position="fixed" bottom="0" width="93%">
+      {/* <Box display={["block", "none"]} position="fixed" bottom="0" width="93%">
         <Sidebar />
-      </Box>
+      </Box> */}
     </DashboardLayout>
   );
 };
