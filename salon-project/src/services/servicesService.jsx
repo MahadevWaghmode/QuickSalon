@@ -1,4 +1,4 @@
-import { myAxios } from "./helper";
+import { myAxios, privateAxios } from "./helper";
 
 export const getAllServices = (itemType,salonId) => {
   return myAxios.get(`/${itemType}/${salonId}`).then((respone) => {
@@ -6,12 +6,20 @@ export const getAllServices = (itemType,salonId) => {
   });
 };
 
-export const addService = (serviceData, itemType, salonId) => {
-  return myAxios.post(`/${itemType}/${salonId}`,serviceData).then((response)=>{
-    console.log(response.data)
+export const addService = async (salonId,service) => {
+  try {
+    const response = await privateAxios.post(`/api/admin/salon/${salonId}/service`, service, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
-  })
+  } catch (error) {
+    console.error(`Error Adding Service:`, error);
+    throw error;
+  }
 };
+
 
 export const editService = () => {};
 

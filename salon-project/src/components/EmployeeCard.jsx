@@ -10,6 +10,7 @@ const EmployeeCard = ({ employee }) => {
       p={5}
       boxShadow="md"
       bg="white"
+      w={["full","sm"]}
     >
       <HStack spacing={4}>
         <Avatar name={employee.name} />

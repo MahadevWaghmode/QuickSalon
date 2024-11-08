@@ -95,7 +95,7 @@ public class AdminController {
 	ServiceService serviceService;
 
 	@PostMapping("/salon/{salonId}/service")
-	public ResponseEntity<Service> addSalonService(@RequestBody Service service, @PathVariable int salonId) {
+	public ResponseEntity<Service> addSalonService(@Valid @RequestBody Service service, @PathVariable int salonId) {
 
 		Service createdService = this.serviceService.createService(salonId, service);
 

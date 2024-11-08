@@ -10,16 +10,12 @@ import {
   Flex,
   VStack,
   Text,
-  Spacer,
-  IconButton,
 } from "@chakra-ui/react";
 import { getSalon } from "../services/salonService";
 import ProfileCard from "./Salons/components/ProfileCard";
 import ServiceCard from "../components/ServiceCard";
 import EmployeeCard from "../components/EmployeeCard";
-import Sidebar from "../components/Sidebar";
-import { BiPlus, BiPlusCircle } from "react-icons/bi";
-import AddServiceModal from "./Services/components/AddServiceModal";
+import AddServiceModal from "../components/AddServiceModal";
 import AddEmployeeModal from "../components/AddEmployeeModal";
 
 const SalonProfile = () => {
@@ -53,13 +49,11 @@ const SalonProfile = () => {
   }, [salonId]);
 
   const handleEditSalonProfile = (updatedSalon) => {
-    fetchSalon(salonId) // Update the state with the new salon data
+    fetchSalon(salonId); // Update the state with the new salon data
   };
-  const handleAddEmp=() =>{
+  const handleAdd = () => {
     fetchSalon(salonId);
-  }
-
-  
+  };
 
   if (loading) {
     return (
@@ -111,12 +105,12 @@ const SalonProfile = () => {
               onClick={() => setActiveTab("Employees")}
             >
               Employees
-              </Box>
-              <Box ml={20}>
+            </Box>
+            <Box ml={20}>
               {activeTab === "Services" ? (
-                <AddServiceModal />
+                <AddServiceModal salonId={salon.id} onSubmit={handleAdd} />
               ) : (
-                <AddEmployeeModal salonId={salon.id} onSubmit={handleAddEmp} />
+                <AddEmployeeModal salonId={salon.id} onSubmit={handleAdd} />
               )}
             </Box>
           </Flex>

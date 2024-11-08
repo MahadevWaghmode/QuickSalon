@@ -8,12 +8,13 @@ import {
 import DashboardLayout from "../../components/DashboardLayout";
 import { BiSearch } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-import AddServiceModal from "./components/AddServiceModal";
+
 import EditServiceModal from "./components/EditServiceModal";
 import ConfirmDeleteDialog from "../../components/ConfirmDeleteDialog";
 import { getAllServices, deleteService } from "../../services/servicesService";
 import TableComponent from "../../components/TableComponent";
 import { getAllItems } from "../../services/itemService";
+import AddServiceModal from "../../components/AddServiceModal";
 
 const Service = () => {
   const [services, setServices] = useState([]);

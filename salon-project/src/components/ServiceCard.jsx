@@ -4,13 +4,14 @@ import { Box, Text, VStack, Badge } from "@chakra-ui/react";
 const ServiceCard = ({ service }) => {
   return (
     <Box
-    w={["full","max"]}
+    w={["full","sm"]}
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
       p={5}
       boxShadow="md"
       bg="white"
+      
     >
       <VStack align="start" spacing={3}>
         <Text fontSize="lg" fontWeight="bold">
