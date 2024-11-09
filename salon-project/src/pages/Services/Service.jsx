@@ -11,10 +11,10 @@ import { MdDelete } from "react-icons/md";
 
 import EditServiceModal from "./components/EditServiceModal";
 import ConfirmDeleteDialog from "../../components/ConfirmDeleteDialog";
-import { getAllServices, deleteService } from "../../services/servicesService";
+import { deleteService } from "../../services/servicesService";
 import TableComponent from "../../components/TableComponent";
 import { getAllItems } from "../../services/itemService";
-import AddServiceModal from "../../components/AddServiceModal";
+import AddOrEditServiceModal from "../../components/AddOrEditServiceModal";
 
 const Service = () => {
   const [services, setServices] = useState([]);
@@ -92,7 +92,7 @@ const Service = () => {
             </InputLeftElement>
             <Input width="auto" type="text" placeholder="Search" />
           </InputGroup>
-          <AddServiceModal onServiceAdded={handleServiceAdded} />
+          <AddOrEditServiceModal onServiceAdded={handleServiceAdded} />
           
         </HStack>
 

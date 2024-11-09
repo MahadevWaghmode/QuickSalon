@@ -15,12 +15,17 @@ import { getSalon } from "../services/salonService";
 import ProfileCard from "./Salons/components/ProfileCard";
 import ServiceCard from "../components/ServiceCard";
 import EmployeeCard from "../components/EmployeeCard";
-import AddServiceModal from "../components/AddServiceModal";
+
 import AddEmployeeModal from "../components/AddEmployeeModal";
+import { getEmployees } from "../services/employeeService";
+import { getServices } from "../services/servicesService";
+import AddOrEditServiceModal from "../components/AddOrEditServiceModal";
 
 const SalonProfile = () => {
   const { salonId } = useParams();
   const [salon, setSalon] = useState({});
+  const [employees, setEmployees] = useState([]);
+  const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("Services");
   const toast = useToast();
@@ -28,8 +33,14 @@ const SalonProfile = () => {
   const fetchSalon = async (id) => {
     setLoading(true);
     try {
-      const data = await getSalon(id);
-      setSalon(data);
+      const salonData = await getSalon(id);
+      setSalon(salonData);
+
+      const employeeData = await getEmployees(id);
+      setEmployees(employeeData);
+
+      const serviceData = await getServices(id);
+      setServices(serviceData);
     } catch (error) {
       console.error(error);
       toast({
@@ -49,10 +60,31 @@ const SalonProfile = () => {
   }, [salonId]);
 
   const handleEditSalonProfile = (updatedSalon) => {
-    fetchSalon(salonId); // Update the state with the new salon data
+    setSalon((prev) => ({ ...prev, ...updatedSalon }));
   };
-  const handleAdd = () => {
-    fetchSalon(salonId);
+
+  const handleAddOrEditService = (isEdit, newOrUpdatedService) => {
+    if (isEdit) {
+      setServices((prev) =>
+        prev.map((service) =>
+          service.id === newOrUpdatedService.id ? newOrUpdatedService : service
+        )
+      );
+    } else {
+      setServices((prev) => [...prev, newOrUpdatedService]);
+    }
+  };
+
+  const handleAddOrEditEmployee = (isEdit = false, newOrUpdatedEmployee) => {
+    if (isEdit) {
+      setEmployees((prev) =>
+        prev.map((emp) =>
+          emp.id === newOrUpdatedEmployee.id ? newOrUpdatedEmployee : emp
+        )
+      );
+    } else {
+      setEmployees((prev) => [...prev, newOrUpdatedEmployee]);
+    }
   };
 
   if (loading) {
@@ -78,10 +110,12 @@ const SalonProfile = () => {
       >
         <GridItem colSpan={1}>
           <Flex gap={1} direction={["column", "row"]}>
-            <ProfileCard salon={salon} onSubmit={handleEditSalonProfile} />
-            {/* <Box display={["none", "contents"]}>
-              <Sidebar />
-            </Box> */}
+            <ProfileCard
+              salon={salon}
+              noOfServices={services.length}
+              noOfEmployees={employees.length}
+              onSubmit={handleEditSalonProfile}
+            />
           </Flex>
         </GridItem>
 
@@ -108,17 +142,29 @@ const SalonProfile = () => {
             </Box>
             <Box ml={20}>
               {activeTab === "Services" ? (
-                <AddServiceModal salonId={salon.id} onSubmit={handleAdd} />
+                <AddOrEditServiceModal
+                  salonId={salonId}
+                  onSubmit={handleAddOrEditService}
+                />
               ) : (
-                <AddEmployeeModal salonId={salon.id} onSubmit={handleAdd} />
+                <AddEmployeeModal
+                  salonId={salonId}
+                  onSubmit={handleAddOrEditEmployee}
+                />
               )}
             </Box>
           </Flex>
+
           {activeTab === "Services" && (
             <VStack align="start" mt={5} spacing={4}>
-              {salon.services && salon.services.length > 0 ? (
-                salon.services.map((service) => (
-                  <ServiceCard key={service.id} service={service} />
+              {services.length > 0 ? (
+                services.map((service) => (
+                  <ServiceCard
+                    key={service.id}
+                    salonId={salonId}
+                    service={service}
+                    onsubmit={handleAddOrEditService}
+                  />
                 ))
               ) : (
                 <Text fontSize="lg" color="gray.600">
@@ -127,11 +173,17 @@ const SalonProfile = () => {
               )}
             </VStack>
           )}
+
           {activeTab === "Employees" && (
             <VStack align="start" mt={5} spacing={4}>
-              {salon.employee && salon.employee.length > 0 ? (
-                salon.employee.map((employee) => (
-                  <EmployeeCard key={employee.id} employee={employee} />
+              {employees.length > 0 ? (
+                employees.map((emp) => (
+                  <EmployeeCard
+                    key={emp.id}
+                    salonId={salonId}
+                    employee={emp}
+                    onsubmit={handleAddOrEditEmployee}
+                  />
                 ))
               ) : (
                 <Text fontSize="lg" color="gray.600">
@@ -142,9 +194,6 @@ const SalonProfile = () => {
           )}
         </GridItem>
       </Grid>
-      {/* <Box display={["block", "none"]} position="fixed" bottom="0" width="93%">
-        <Sidebar />
-      </Box> */}
     </DashboardLayout>
   );
 };

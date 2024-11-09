@@ -59,9 +59,9 @@ public class AdminController {
 
 		return new ResponseEntity<Salon>(createdSalon, HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping("/salon/{salonId}")
-	public ResponseEntity<Salon> getUserSalon(@PathVariable Integer salonId){
+	public ResponseEntity<Salon> getUserSalon(@PathVariable Integer salonId) {
 		Salon salon = this.salonService.getSalonById(salonId);
 		return new ResponseEntity<Salon>(salon, HttpStatus.CREATED);
 	}
@@ -110,7 +110,7 @@ public class AdminController {
 	}
 
 	@PutMapping("/salon/{salonId}/service/{serviceId}")
-	public ResponseEntity<Service> updateSalonService(@PathVariable Integer salonId,@PathVariable Integer serviceId,
+	public ResponseEntity<Service> updateSalonService(@PathVariable Integer salonId, @PathVariable Integer serviceId,
 			@RequestBody Service service) {
 
 		Service updatedService = this.serviceService.updateService(salonId, serviceId, service);
@@ -126,16 +126,15 @@ public class AdminController {
 
 		return "deleted";
 	}
-		
-	
-	
+
 	/* Salon Employee Operations */
 
 	@Autowired
 	EmployeeService employeeService;
-	
+
 	@PostMapping("/salon/{salonId}/employee")
-	public ResponseEntity<Employee> addEmployeeService(@Valid @RequestBody Employee employee, @PathVariable int salonId) {
+	public ResponseEntity<Employee> addEmployeeService(@Valid @RequestBody Employee employee,
+			@PathVariable int salonId) {
 		System.out.println(employee);
 
 		Employee createdEmployee = this.employeeService.createEmployee(salonId, employee);
@@ -151,15 +150,15 @@ public class AdminController {
 	}
 
 	@PutMapping("/salon/{salonId}/employee/{empId}")
-	public ResponseEntity<Employee> updateSalonEmployee(@PathVariable Integer salonId,@PathVariable Integer empId,
-			@RequestBody Employee employee) {
-
+	public ResponseEntity<Employee> updateSalonEmployee(@PathVariable Integer salonId, @PathVariable Integer empId,
+			@Valid @RequestBody Employee employee) {
+		System.out.println(employee);
 		Employee updatedEmployee = this.employeeService.updateEmployee(salonId, empId, employee);
 
 		return ResponseEntity.ok(updatedEmployee);
 
 	}
-	
+
 	@DeleteMapping("/salon/{salonId}/employee/{empId}")
 	public String deleteSalonEmployee(@PathVariable Integer salonId, @PathVariable Integer empId) {
 

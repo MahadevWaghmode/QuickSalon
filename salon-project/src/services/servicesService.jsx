@@ -1,9 +1,17 @@
 import { myAxios, privateAxios } from "./helper";
 
-export const getAllServices = (itemType,salonId) => {
-  return myAxios.get(`/${itemType}/${salonId}`).then((respone) => {
-    return respone.data;
-  });
+export const getServices = async (salonId) => {
+  try {
+    const response = await privateAxios.get(`/api/admin/salon/${salonId}/service`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(`Error Getting Service:`, error);
+    throw error;
+  }
 };
 
 export const addService = async (salonId,service) => {
@@ -21,8 +29,23 @@ export const addService = async (salonId,service) => {
 };
 
 
-export const editService = () => {};
-
+export const editService = async (salonId, serviceId, updateService) => {
+  try {
+    const response = await privateAxios.put(
+      `/api/admin/salon/${salonId}/service/${serviceId}`,
+      updateService,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating Service:`, error);
+    throw error;
+  }
+};
 export const deleteService = () => {};
 
 // // Fetch all services

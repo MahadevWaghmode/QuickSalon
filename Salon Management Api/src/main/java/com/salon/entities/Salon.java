@@ -32,11 +32,11 @@ public class Salon {
 	@ManyToOne
 	private User user;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Service> services;
 
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Employee> employee;
 	
