@@ -10,11 +10,8 @@ import {
 import { FaMapMarkerAlt } from "react-icons/fa";
 import EditSalonProfileModal from "../../../components/EditSalonProfileModal";
 
-function ProfileCard({ salon,onSubmit }) {
+function ProfileCard({ salon,onSubmit,noOfServices,noOfEmployees }) {
   // Count the number of services and employees
-  const numberOfServices = salon.services ? salon.services.length : 0;
-  const numberOfEmployees = salon.employee ? salon.employee.length : 0;
-  
   
 
 
@@ -49,13 +46,13 @@ function ProfileCard({ salon,onSubmit }) {
       {/* Follower Stats */}
       <HStack mt={4} spacing={8} justify="center">
         <VStack>
-          <Text fontWeight="bold">{numberOfServices}</Text>
+          <Text fontWeight="bold">{noOfServices}</Text>
           <Text fontSize="xs" color="gray.500">
             Services
           </Text>
         </VStack>
         <VStack>
-          <Text fontWeight="bold">{numberOfEmployees}</Text>
+          <Text fontWeight="bold">{noOfEmployees}</Text>
           <Text fontSize="xs" color="gray.500">
             Employees
           </Text>

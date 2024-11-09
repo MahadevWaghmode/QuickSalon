@@ -16,10 +16,11 @@ import ProfileCard from "./Salons/components/ProfileCard";
 import ServiceCard from "../components/ServiceCard";
 import EmployeeCard from "../components/EmployeeCard";
 
-import AddEmployeeModal from "../components/AddEmployeeModal";
+
 import { getEmployees } from "../services/employeeService";
 import { getServices } from "../services/servicesService";
 import AddOrEditServiceModal from "../components/AddOrEditServiceModal";
+import AddOrEditEmployeeModal from "../components/AddOrEditEmployeeModal";
 
 const SalonProfile = () => {
   const { salonId } = useParams();
@@ -147,7 +148,7 @@ const SalonProfile = () => {
                   onSubmit={handleAddOrEditService}
                 />
               ) : (
-                <AddEmployeeModal
+                <AddOrEditEmployeeModal
                   salonId={salonId}
                   onSubmit={handleAddOrEditEmployee}
                 />
