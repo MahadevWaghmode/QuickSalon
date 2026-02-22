@@ -43,10 +43,10 @@ const OwnerDashboard = () => {
 
   // ✅ Temporary dummy stats
   const stats = {
-    salons: 0,
-    todaysBookings: 0,
-    pending: 0,
-    avgRating: 0,
+    salons: 4,
+    todaysBookings: 3,
+    pending: 1,
+    avgRating: 5,
   }
 
   return (
@@ -102,7 +102,7 @@ const OwnerDashboard = () => {
         }, boxShadow: { xs: "none", sm: '0 4px 20px rgba(0,0,0,0.08)' }
       }}  >
         <Typography variant="h6" fontWeight='600' sx={{ mb: 2, p: 2 }}>
-          Recent Bookings
+          Recent Activity
         </Typography>
 
         {tempBookingsData.length === 0 ? (
