@@ -1,96 +1,149 @@
+# ✂️ Quick Salon System -- Frontend
 
-# Quick Salon System
+A modern, responsive salon appointment booking web application built
+using **React.js** and **Material UI (MUI)**.
 
-A web application designed to streamline the salon appointment process, enabling users to book appointments at the nearest or any available salon. Inspired by ride-hailing apps like Ola and Uber, this system prioritizes efficiency in appointment scheduling, reduces wait times, and securely handles payments.
+Inspired by ride-hailing platforms, this system enables users to find
+nearby salons, book appointments in real-time, and manage bookings
+efficiently with a clean and intuitive interface.
 
-## Features
+------------------------------------------------------------------------
 
-1. **Nearest Salon Booking**: Users can find and book appointments at the closest available salon, similar to apps like Ola or Uber.
-2. **Any Salon Booking**: Flexibility to book appointments at any available salon.
-3. **Real-time Availability**: Shows updated slot availability, ensuring accurate booking and scheduling.
-4. **Optimized Scheduling**: Manages appointments to minimize wait times and maximize salon resources.
-5. **Secure Payment Handling**: Integrates payment gateway for seamless and safe transactions.
+## 🏗 System Architecture
 
-## Challenges Addressed
+Frontend (React + MUI)\
+↓ REST API\
+Backend (Spring Boot)\
+↓\
+MySQL
 
-1. **Reduced Waiting Time**: Designed to get customers to a salon chair with minimal delay.
-2. **Efficient Appointment Scheduling**: Implements an optimized scheduling algorithm for better service flow.
-3. **Payment Processing**: Securely manages payments for a smooth user experience.
+------------------------------------------------------------------------
 
-## Technologies Used
+## 🔗 Backend Repository
 
-- **Frontend**: React.js (UI development) with Chakra UI components
-- **Backend**: Java Spring Boot for managing API and business logic
-- **Database**: MySQL for storing user, salon, and appointment data
-- **Real-time Scheduling**: Dynamic slot management for availability tracking
+The backend service is maintained separately:
 
-## Getting Started
+👉 https://github.com/yourusername/quick-salon-backend
 
-These instructions will help you set up the project on your local machine for development and testing.
+------------------------------------------------------------------------
 
-### Prerequisites
+## ✨ Features
 
-- **Node.js** and **npm** (for frontend setup)
-- **Java JDK** (for backend setup with Spring Boot)
-- **MySQL** 
+-   📍 Nearest Salon Booking Interface
+-   🏪 Browse & Book Any Salon
+-   📅 Real-time Slot Availability Display
+-   💳 Payment Integration UI
+-   🔐 User Authentication (Login / Register)
+-   🛡 Protected Routes
+-   📱 Fully Responsive Design
+-   🎨 Clean Modern UI with Material UI
+-   📊 Admin Dashboard (if implemented)
 
-### Installation
+------------------------------------------------------------------------
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/Salon-Appointment-Booking-System.git
-   cd Salon-Appointment-Booking-System
-   ```
+## 🛠 Tech Stack
 
-2. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   ```
+-   React.js
+-   Material UI (MUI)
+-   Axios
+-   React Router DOM
+-   Vite
+-   JavaScript (ES6+)
 
-3. **Backend Setup**
-   - Go to the backend folder:
-     ```bash
-     cd ../backend
-     ```
-   - Configure the database connection in `application.properties`.
-   - Build and run the backend:
-     ```bash
-     ./mvnw spring-boot:run
-     ```
+------------------------------------------------------------------------
 
-4. **Database Setup** (if applicable)
-   - Create and set up the database according to the project requirements.
-   - Update your backend configuration to match your database credentials.
+## 📦 Installation & Setup
 
-### Running the Application
+### 🔹 Prerequisites
 
-1. **Run the Frontend**
-   ```bash
-   cd frontend
-   npm run dev
-   ```
+-   Node.js
+-   npm
 
-2. **Access the App**
-   - Open your browser and navigate to `http://localhost:5173` to use the application.
+------------------------------------------------------------------------
 
-## Usage
+### 🔹 Clone Repository
 
-1. **Book Appointment**: Choose between the nearest salon or any other available salon.
-2. **Manage Bookings**: Track and update appointment details.
-3. **Make Payments**: Securely handle payments through the integrated payment gateway.
+``` bash
+git clone https://github.com/yourusername/quick-salon-frontend.git
+cd quick-salon-frontend
+```
 
-## Contributing
+------------------------------------------------------------------------
 
-We welcome contributions! Feel free to fork the repository, make your changes, and submit a pull request.
+### 🔹 Install Dependencies
 
-## License
+``` bash
+npm install
+```
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+------------------------------------------------------------------------
 
-## Contact
+### 🔹 Configure Backend API URL
 
-For questions or feedback, feel free to reach out:
+Create a `.env` file in the root directory:
 
-- **Email**: [mahadevwaghmode2@gmail.com](mailto:mahadevwaghmode2@gmail.com)
-- **GitHub**: [https://github.com/mahadevwaghmode](https://github.com/mahadevwaghmode)
+``` env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+Make sure your backend server is running.
+
+------------------------------------------------------------------------
+
+### 🔹 Run Development Server
+
+``` bash
+npm run dev
+```
+
+Application will run at:
+
+http://localhost:5173
+
+------------------------------------------------------------------------
+
+## 📂 Project Structure
+
+    src/
+     ├── components/
+     ├── pages/
+     ├── layouts/
+     ├── services/
+     ├── routes/
+     ├── context/
+     └── assets/
+
+------------------------------------------------------------------------
+
+## 🔐 Authentication Flow
+
+-   JWT-based authentication
+-   Protected routes using React Router
+-   Role-based UI rendering (User/Admin)
+
+------------------------------------------------------------------------
+
+## 🚀 Future Enhancements
+
+-   Google Maps Integration
+-   Push Notifications
+-   Progressive Web App (PWA)
+-   Dark Mode Support
+-   Online Payment Gateway Integration
+
+------------------------------------------------------------------------
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+Mahadev Waghmode
+
+📧 Email: mahadevwaghmode2@gmail.com\
+💻 GitHub: https://github.com/mahadevwaghmode
+
+------------------------------------------------------------------------
